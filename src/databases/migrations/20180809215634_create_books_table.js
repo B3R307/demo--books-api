@@ -4,11 +4,11 @@ module.exports.up = function(knex, Promise) {
   .schema
   .createTable('books', (booksTable)=>{
     booksTable.increments()
-    booksTable.string('title')
+    booksTable.string('title').notNullable()
     booksTable.text('blurb')
     booksTable.integer('copyright')
 
-
+    // booksTable.timestamps(true,true)
 
     return booksTable
 

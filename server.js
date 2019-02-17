@@ -4,14 +4,21 @@ const { Model } = require('objection')
 
 const knexFileConfig = require('./knexfile.js')
 
+const bodyParser = require('body-parser')
+
 const apiRouter = require('./src/routers/apiRouter.js')
 
 const app = express()
 const PORT = 3000
 
+
 const appDb = knex(knexFileConfig.development)
 Model.knex(appDb)
 app.locals.db = appDb
+
+app.use(bodyParser.urlencoded({extended:false}) )
+app.use(bodyParser.json() )
+
 
 // appDb
 // .select('*')
